@@ -1,28 +1,19 @@
 package pages;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import pages.elements.Header;
 
-import static libs.ConfigProvider.configProperties;
+public class ParentPageWithHeader extends ParentPage{
 
-public class ParentPageWithHeader extends ActionsWithElements{
-
+    Header header;
     public ParentPageWithHeader(WebDriver webDriver) {
         super(webDriver);
     }
 
-    String BASE_URL = configProperties.base_url();
-
-    public void openPage(String url) {
-        try {
-            webDriver.get(url);
-            logger.info("Page was opened " + url);
-        } catch (Exception e) {
-            logger.error("Can not open " + url);
-            Assert.fail("Can not open " + url);
-        }
+    public Header getHeader() {
+        return new Header(webDriver);
     }
 
-    //TODO add checkUrl
+
 
 }

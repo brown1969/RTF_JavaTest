@@ -1,10 +1,17 @@
-package pages;
+package pages.elements;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.*;
 
 public class Header extends ActionsWithElements {
+
+    @FindBy(xpath = "//*[@id='__nuxt']/div/div[1]/div/div/div[3]/div[1]/a[1]/span")
+    private WebElement buttonLogin;
+
+    @FindBy(xpath = "//*[@id='__nuxt']/div/div[1]/div/div/div[3]/div[1]/a[2]")
+    private WebElement buttonJoin;
 
     @FindBy(xpath = "//a[@class='header-base__logo relative z-10']")
     private WebElement buttonReadyToFight;
@@ -43,6 +50,7 @@ public class Header extends ActionsWithElements {
     public Header(WebDriver webDriver) {
         super(webDriver);
     }
+
 
     public void checkIsButtonUserAvatarVisible() {
         checkElementDisplayed(userAvatar);
@@ -89,6 +97,14 @@ public class Header extends ActionsWithElements {
 
     public void clickOnButtonLogOut() {
         clickOnElement(buttonLogOut);
+    }
+
+
+
+
+    public LoginPage clickOnButtonLogin() {
+        clickOnElement(buttonLogin);
+        return new LoginPage(webDriver);
     }
 
 }
